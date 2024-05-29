@@ -11,7 +11,7 @@ source:
   patches:
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - name: pytensor-base
@@ -60,7 +60,6 @@ outputs:
         - minikanren
         - cons
         - typing_extensions
-        - {{ pin_compatible("numpy") }}
 
     test:
       imports:
