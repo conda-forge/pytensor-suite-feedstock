@@ -12,12 +12,13 @@ source:
 
 build:
   number: 0
+  skip: true  # [(not osx) or arm64]
 
 outputs:
   - name: pytensor-base
     build:
       # NOTE: Keep this line synchronized with the identical one below.
-      skip: true  # [py<310]
+      skip: true  # [py<313]
       script:
         - python -m pip install . --no-deps -vv
       entry_points:
@@ -74,7 +75,7 @@ outputs:
   - name: pytensor
     build:
       # NOTE: Keep this line synchronized with the identical one above.
-      skip: true  # [py<310]
+      skip: true  # [py<313]
       script:
         - echo "Nothing to build here, just add dependencies."
     requirements:
@@ -111,12 +112,19 @@ outputs:
         - python -c "import pytensor; print(pytensor.config.blas__ldflags); print(pytensor.config)"
         - python -c "import pytensor; assert pytensor.config.blas__ldflags != '', 'Blas flags are empty'"
         - python check-for-warnings.py allowed-warnings-main.txt
+        - python test-cger.py
+        - conda env create -n before -f before.yml
+        - conda run -n before python test-cger.py
+        - conda env create -n after -f after.yml
+        - conda run -n after python test-cger.py
       requires:
         - pip
       files:
         - check-for-warnings.py
         - allowed-warnings-main.txt
-
+        - test-cger.py
+        - before.yml
+        - after.yml
 about:
   home: https://github.com/pymc-devs/pytensor
   license: BSD-3-Clause
