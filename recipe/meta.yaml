@@ -15,7 +15,7 @@ source:
     - fix-mkl-blas-detection.patch
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - package:
@@ -35,7 +35,7 @@ outputs:
         - ${{ compiler('cxx') }}
         - if: build_platform != target_platform
           then:
-            - python
+            - python ==3.11.*
             - setuptools >=59.0.0
             - cython
             # Allow numpy pinnings to be managed by conda-forge global dependencies
@@ -45,7 +45,7 @@ outputs:
             - cross-python_${{ target_platform }}
             - tomli
       host:
-        - python
+        - python ==3.11.*
         - setuptools >=59.0.0
         - cython
         # Allow numpy pinnings to be managed by conda-forge global dependencies
@@ -55,7 +55,7 @@ outputs:
         - pip
         - tomli
       run:
-        - python
+        - python >=3.11
         - setuptools >=59.0.0
         - scipy >=1,<2
         - numpy >=2.0
@@ -90,9 +90,9 @@ outputs:
         - "echo \"Nothing to build here, just add dependencies.\""
     requirements:
       host:
-        - python
+        - python ==3.11.*
       run:
-        - python
+        - python >=3.11.*
         - ${{ pin_subpackage('pytensor-base', exact=True) }}
         - if: linux or win
           then: gxx
