@@ -15,7 +15,7 @@ source:
     - fix-mkl-blas-detection.patch
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - package:
@@ -110,7 +110,7 @@ outputs:
             - blas * mkl
             - mkl-service
         - if: osx and arm64
-          then: blas * accelerate
+          then: blas * *_*accelerate
         - if: not ((linux and x86_64) or win or osx)
           then: blas * openblas
       run_constraints:
