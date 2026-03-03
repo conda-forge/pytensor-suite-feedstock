@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "2.38.0"
+  version: "2.38.1"
 
 recipe:
   # https://github.com/conda/conda-build/issues/3933
@@ -10,7 +10,7 @@ recipe:
 
 source:
   url: https://pypi.org/packages/source/p/pytensor/pytensor-${{ version }}.tar.gz
-  sha256: 657f0d808ac2c247535ab9d8c5d27c98fb1b20a5f2d6716c1daed4630ad473f8
+  sha256: 752e5ceb503e70dad43a84649f776734228705c746a0c7ee50e655bc46d088cc
   patches:
     - fix-mkl-blas-detection.patch
 
@@ -141,7 +141,8 @@ outputs:
           - python -c "import pytensor; print(pytensor.config.blas__ldflags); print(pytensor.config)"
           - python -c "import pytensor; assert pytensor.config.blas__ldflags != '', 'Blas flags are empty'"
           - python check-for-warnings.py allowed-warnings-main.txt
-          - python -c "from pytensor.tensor import scalar; scalar('x').exp().eval({'x': 0}, mode='C')"
+          - >
+            python -c "from pytensor.tensor import scalar; scalar('x').exp().eval({'x': 0}, mode='C')"
 
 about:
   license: BSD-3-Clause
