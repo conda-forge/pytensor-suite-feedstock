@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "2.38.2"
+  version: "2.38.3"
 
 recipe:
   # https://github.com/conda/conda-build/issues/3933
@@ -10,7 +10,7 @@ recipe:
 
 source:
   url: https://pypi.org/packages/source/p/pytensor/pytensor-${{ version }}.tar.gz
-  sha256: c804e665e69e830e31344133fea5793d2fd75c662ee1359d01589875c0cce105
+  sha256: 6c959ca9eb46909a8a66e8648e2e90f9d80b4d288184401366d8fa44426e86d0
   patches:
     - fix-mkl-blas-detection.patch
 
