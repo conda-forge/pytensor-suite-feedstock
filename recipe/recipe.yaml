@@ -15,7 +15,7 @@ source:
     - fix-mkl-blas-detection.patch
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - package:
@@ -108,11 +108,7 @@ outputs:
         - if: (linux and x86_64) or win or (osx and not arm64)
           then:
             - blas * mkl
-            # mkl-service 2.7.1 adds a `Requires-Dist: mkl` to its wheel
-            # metadata that conda-forge does not satisfy, so `pip check`
-            # in the tests below fails. Drop this pin once a fixed build
-            # ships via <https://github.com/conda-forge/mkl-service-feedstock/pull/53>.
-            - mkl-service <2.7.1
+            - mkl-service
         - if: osx and arm64
           then: blas * *accelerate
         - if: not ((linux and x86_64) or win or osx)
