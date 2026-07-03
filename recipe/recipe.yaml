@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "3.0.7"
+  version: "3.1.1"
 
 recipe:
   # https://github.com/conda/conda-build/issues/3933
@@ -9,8 +9,8 @@ recipe:
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/p/pytensor/pytensor-${{ version }}.tar.gz
-  sha256: 858df82fa44e5401c9e913e5acaa5e0044f1515db0290755a139e58e28f22b9e
+  url: https://files.pythonhosted.org/packages/cc/be/7e4a95947c0b0e6b575bae1eeb0c251937041da25010146a4036acb54745/pytensor-${{ version }}.tar.gz
+  sha256: 557c57e1ff36effe43c158b77f121a272b8da7323296c6a8b885861585705efe
   patches:
     - fix-mkl-blas-detection.patch
 
@@ -22,7 +22,7 @@ outputs:
       name: pytensor-base
     build:
       # NOTE: Keep this line synchronized with the identical one below.
-      skip: match(python, "<3.11")
+      skip: match(python, "<3.12")
       script:
         - python -m pip install . --no-deps -vv
       python:
@@ -85,7 +85,7 @@ outputs:
       name: pytensor
     build:
       # NOTE: Keep this line synchronized with the identical one above.
-      skip: match(python, "<3.11")
+      skip: match(python, "<3.12")
       script:
         - "echo \"Nothing to build here, just add dependencies.\""
     requirements:
