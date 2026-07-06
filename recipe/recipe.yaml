@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "3.1.1"
+  version: "3.1.2"
 
 recipe:
   # https://github.com/conda/conda-build/issues/3933
@@ -9,8 +9,8 @@ recipe:
   version: ${{ version }}
 
 source:
-  url: https://files.pythonhosted.org/packages/cc/be/7e4a95947c0b0e6b575bae1eeb0c251937041da25010146a4036acb54745/pytensor-${{ version }}.tar.gz
-  sha256: 557c57e1ff36effe43c158b77f121a272b8da7323296c6a8b885861585705efe
+  url: https://files.pythonhosted.org/packages/5a/b5/075a2c0d0c5545cc810839265d6d0ef74109d12b825e786aa7215c3ee2d2/pytensor-${{ version }}.tar.gz
+  sha256: 2b0eafee4a431654dc3b836bd904211e4dccf8756820ea415d46b82d2d1c26ea
   patches:
     - fix-mkl-blas-detection.patch
 
