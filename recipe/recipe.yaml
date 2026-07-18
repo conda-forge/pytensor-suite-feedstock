@@ -61,10 +61,6 @@ outputs:
         - numpy >=2.0
         - numba >=0.58,<=0.65.1
         - filelock >=3.15
-        - etuples
-        - logical-unification
-        - minikanren
-        - cons
     tests:
       - python:
           imports:
