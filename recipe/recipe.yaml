@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "3.1.3"
+  version: "3.2.1"
 
 recipe:
   # https://github.com/conda/conda-build/issues/3933
@@ -9,8 +9,8 @@ recipe:
   version: ${{ version }}
 
 source:
-  url: https://files.pythonhosted.org/packages/5c/ae/61f36d8ffa05d0eb1ca7a6c18bec83eef1f8e43d5d307531bdab51dac8be/pytensor-${{ version }}.tar.gz
-  sha256: 76dcc74417edfe24fbbe0b5687b8be7bc069c53e9ee93e08cb245f3b3d2c612f
+  url: https://files.pythonhosted.org/packages/05/43/a6fab015edd5f04ab8e33211b4e4edb6f78428b54b2f0b108aa36eb26208/pytensor-${{ version }}.tar.gz
+  sha256: 6c6a86bc28641c21c65d6a54043eee6173feef75069c54dd8a1c702aebe78e19
   patches:
     - fix-mkl-blas-detection.patch
 
@@ -61,10 +61,6 @@ outputs:
         - numpy >=2.0
         - numba >=0.58,<=0.65.1
         - filelock >=3.15
-        - etuples
-        - logical-unification
-        - minikanren
-        - cons
     tests:
       - python:
           imports:
